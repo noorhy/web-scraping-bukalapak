@@ -3,7 +3,7 @@ import csv
 from bs4 import BeautifulSoup
 
 key = input('Masukkan keyword : ')
-write = csv.writer(open('results/{}.csv'.format(key), 'w', newline=''))
+write = csv.writer(open(f'results/{key}.csv', 'w', newline=''))
 header = ['Nama', 'Harga', 'Stok', 'Rating', 'Kondisi', 'Deskripsi', 'Kategori', 'Rilis', 'Kota', 'Provinsi']
 write.writerow(header)
 
@@ -36,6 +36,6 @@ for page in range(1,11):
         rilis = p['relisted_at']
         kota = p['store']['address']['city']
         provinsi = p['store']['address']['province']
-        write = csv.writer(open('results/{}.csv'.format(key), 'a', newline=''))
+        write = csv.writer(open(f'results/{key}.csv', 'a', newline=''))
         data = [nama, harga, stok, rating, kondisi, deskripsi, kategori, rilis, kota, provinsi]
         write.writerow(data)
